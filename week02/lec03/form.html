@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang=en>
+<head>
+    <meta charset="utf-8">
+    <title>Checkout Page</title>
+    <link rel="stylesheet" type="text/css" href="creditcardjs/creditcardjs.min.css"> <!--creditcardjs plugin styles-->
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <header class=nav-buttons>
+        <a class=go-back role=button href=/>go back</a>
+        <a class=logo href=/ alt=Logo>
+            <img src=img/logo.png>
+        </a>
+        <a class=sign-in role=button href=/>sign in</a>
+    </header>
+    <main>
+        <form>
+            <section class=order-summary>
+                <div class=order-wrapper>
+                    <h1>your order</h1>
+                    <ul class=order-details>
+                        <li><h1>items</h1>2 documents</li>
+                        <li><h1>details</h1>2 languages</li>
+                        <li><h1>price</h1>$ 696.06</li>
+                        <li><h1>delivery</h1>48 hours</li>
+                    </ul>
+                </div>
+                <div class=buttons-wrapper>
+                    <button id=submit-button type=submit class=place-order>place order</button>
+                    <button type=button class=print-quote>print a quote</button>
+                </div>
+            </section>
+            <section class=support-info>
+            	<h1>help center</h1>
+            	<p>If you need assistance while placing your order, contact on of our beloved Project Manager by phone or email.</p>
+            	<a href=tel:+9710555555>+971 (0) 555-555</a>
+            	<a href=mailto:help@qtest.com>help@qtest.com</a>
+            </section>
+            <section class=translation-type>
+                <h1><span>Select what you want to translate</span></h1>
+                <input type=radio name=trans-type id=trans-website value=website>
+                <label for=trans-website>Website</label>
+                <input type=radio name=trans-type id=trans-documents value=documents checked>
+               	<label for=trans-documents>Documents</label>
+                <input type=radio name=trans-type id=trans-social value=social>
+                <label for=trans-social>Social account</label>
+            </section>
+            <section class="step documents">
+                <h1>Upload your documents <small>(Doc, Docx, Text, PDF, Markdown)</small></h1>
+                
+                <input name=source-files id=source-files class=inputfile type=file multiple accept=".txt, .doc, .docx, .pdf, .markdown, .mdown, .mkdn, .mkd, .md">
+				<label for=source-files class=file-upload>Upload a new file</label>
+                <table>
+                    <tr>
+                        <th>File name</th>
+                        <th>File size</th>
+                        <th>Number of words</th>
+                        <th>Remove</th>
+                    </tr>
+                    <tr>
+                        <td>business_operations.docx</td>
+                        <td>78kb</td>
+                        <td>842</td>
+                        <td>
+                            <button class=remove-file id=remove-file-0 type=button>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>business_financial.docx</td>
+                        <td>26kb</td>
+                        <td>2,326</td>
+                        <td>
+                            <button class=remove-file id=remove-file-1 type=button>
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </section>
+            <section class="step language">
+                <h1>Choose your language settings</h1>
+
+                <label for=trans-from>From</label>
+                <div class=select-wrapper>
+                    <select id=trans-from name=trans-from>
+                        <option value=ar>Arabic</option>
+                        <option value=en selected>English</option>
+                        <option value=lu>Luba-Katanga</option>
+                        <option value=kl>Kalaallisut</option>
+                        <option value=ku>Kurdish</option>
+                        <option value=ru>Russian</option>
+                        <option value=uk>Ukrainian</option>
+                    </select>
+                </div>
+                <br>
+                <label for=trans-to-0>To</label>
+                <div class=select-wrapper>
+                    <select id=trans-to-0 name=trans-to-0>
+                        <option value=ar selected>Arabic</option>
+                        <option value=en>English</option>
+                        <option value=lu>Luba-Katanga</option>
+                        <option value=kl>Kalaallisut</option>
+                        <option value=ku>Kurdish</option>
+                        <option value=ru>Russian</option>
+                        <option value=uk>Ukrainian</option>
+                    </select>
+                </div>
+                <div class=select-wrapper>
+                    <select id=trans-to-1 name=trans-to-1>
+                        <option value=ar>Arabic</option>
+                        <option value=en>English</option>
+                        <option value=lu>Luba-Katanga</option>
+                        <option value=kl>Kalaallisut</option>
+                        <option value=ku selected>Kurdish</option>
+                        <option value=ru>Russian</option>
+                        <option value=uk>Ukrainian</option>
+                    </select>
+                </div>
+                <button id=delete-lang-1 type=button class=delete-lang></button>
+                <button id=add-lang type=button><span>+</span>Add</button>
+            </section>
+            <section class="step tone">
+                <h1>Select your desired tone</h1>
+                <input type=radio name=tone id=tone-casual value=casual>
+                <label for=tone-casual><span class=casual>Friendly / Casual</span></label>
+                <input type=radio name=tone id=tone-pro value=pro checked>
+                <label for=tone-pro><span class=pro>Corporate / Pro</span></label>
+                <input type=radio name=tone id=tone-formal value=formal>
+                <label for=tone-formal><span class=media>Media / Formal</span></label>
+            </section>
+            <section class="step urgency">
+                <h1>Tell us how urgent this job is</h1>
+                <input list=step-list id=trans-urgency name=trans-urgency type=range min=0 max=2 step=1 value=1>
+                <label class=urgency-labels for=trans-urgent>
+                    <span id=urgency-0>I got time</span><span id=urgency-1 class=active>Average</span><span id=urgency-2>Yesterday</span>
+                </label>
+                <section class=time-info>
+                    <h1>Timeline info</h1>
+                    <p>With an <span>average</span> timeline set up, our expert translator can take a reasonable amount of time perfecting your translation</p>
+                </section>
+            </section>
+            <section class="step payment">
+                <h1>Sign up and choose a payment method</h1>
+                <p>Already have an account with us? <a href="">Sign in</a>.</p>
+                <fieldset class=account-info>
+	                <label for=full-name>Full name
+                        <input id=full-name name=full-name type=text autocomplete=name maxlength=200 required>
+                    </label>
+	                <label for=email>Email address
+                        <input id=email name=email type=email autocomplete=email maxlength=200 required>
+                    </label>
+	                <label for=password>Choose a password
+                        <input id=password name=password type=password autocomplete=new-password inputmode=verbatim minlength=6 maxlength=200 required>
+                    </label>	                
+	            </fieldset>
+                <fieldset id=payment-method class=method>
+                    <input type=radio name=pay-method id=pay-card value=card>
+                    <label for=pay-card></label>
+                    <input type=radio name=pay-method id=pay-paypal value=paypal checked>
+                    <label for=pay-paypal></label>
+                    <input type=radio name=pay-method id=pay-amazon value=amazon>
+                    <label for=pay-amazon></label>
+                </fieldset>
+
+                <!--Start of creditcardjs plugin code-->
+                <div class="ccjs-card">
+                  <label class="ccjs-number">
+                    Card Number
+                    <input name="card-number" class="ccjs-number" placeholder="•••• •••• •••• ••••" required>
+                  
+
+                      <select name="card-type" class="ccjs-hidden-card-type">
+                        <option value="mastercard" class="ccjs-mastercard">MasterCard</option>
+                        <option value="visa" class="ccjs-visa">Visa</option>
+                      </select>
+
+
+                  </label>
+                  <label>Expiry Date
+                      <fieldset class="ccjs-expiration">
+                        <select name="month" class="ccjs-month" required>
+                          <option selected disabled>MM</option>
+                          <option value="01">01</option>
+                          <option value="02">02</option>
+                          <option value="03">03</option>
+                          <option value="04">04</option>
+                          <option value="05">05</option>
+                          <option value="06">06</option>
+                          <option value="07">07</option>
+                          <option value="08">08</option>
+                          <option value="09">09</option>
+                          <option value="10">10</option>
+                          <option value="11">11</option>
+                          <option value="12">12</option>
+                        </select>
+
+                        <select name="year" class="ccjs-year" required>
+                          <option selected disabled>YY</option>
+                          <option value="16">16</option>
+                          <option value="17">17</option>
+                          <option value="18">18</option>
+                          <option value="19">19</option>
+                          <option value="20">20</option>
+                          <option value="21">21</option>
+                          <option value="22">22</option>
+                          <option value="23">23</option>
+                          <option value="24">24</option>
+                          <option value="25">25</option>
+                          <option value="26">26</option>
+                        </select>
+                      </fieldset>
+                  </label>
+
+                  <label class="ccjs-csc">
+                    Code
+                    <input name="csc" class="ccjs-csc" placeholder="•••" required>
+                  </label>
+
+
+
+                </div>
+                <script src="creditcardjs/creditcardjs.min.js"></script>
+                <!--End of creditcardjs plugin code-->
+
+            </section>
+
+
+            <section class=form-submit>
+                <label>
+                    <input type=checkbox name=terms-agreed required>
+                    I agree to the <a href="">Terms &amp; Conditions</a>
+                </label>
+                <button id=submit-button type=submit class=place-order>place order</button>
+                <button type=button class=print-quote>print a quote</button>                
+            </section>
+        </form>
+    </main>
+    <footer class=page-info>
+        <section class=what-we-do>
+            <h1>What we do</h1>
+            <p>We provide a full range of language services...</p>
+        </section>
+        <section class=our-office>
+            <h1>Our main office</h1>
+            <address>
+                Dubai, UAE<br>
+                P.O. Box: 502735<br>
+                Phone: <a href=tel:+971044278128 rel=author>+971044278128</a>
+            </address>
+        </section>
+        <section class=connect>
+            <h1>Connect with us</h1>
+            <ul>
+                <li class=facebook><a href= rel=author>Facebook</a>
+                <li class=twitter><a href= rel=author>Twitter</a>
+                <li class=linkedin><a href= rel=author>Linkedin</a>
+            </ul>
+        </section>
+        <a class=logo href=/ alt=Logo>
+            <img src=img/logo.png>
+        </a>
+    </footer>
+<script type="text/javascript" src="scripts.js"></script>
+</body>
+</html>
