@@ -4,7 +4,7 @@
   "description": "",
   "main": "./add.js",
   "scripts": {
-    "test": "mocha -w ./test"
+    "test": "mocha ./test"
   },
   "author": " <Sasha Ponomarov>",
   "license": "ISC",
