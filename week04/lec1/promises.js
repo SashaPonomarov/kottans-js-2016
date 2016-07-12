@@ -1,5 +1,7 @@
 'use strict'
 
+class AggregateError extends Error {}
+
 const isIterable = function (obj) {
   if (obj == null) {
     return false;
@@ -26,6 +28,35 @@ class MyPromise extends Promise {
                                 }
                             }, reject)                
                         }, reject)
+                    }
+                }
+                else {
+                    reject(new TypeError('input is not iterable'))
+                }
+            }, reject)
+        })
+    }
+
+    static some(input, count) {
+        let results = []
+        let rejected = []
+        return new Promise(function(resolve, reject) {
+            Promise.resolve(input).then(function(data) { //in case input is promised
+                if (isIterable(data)) {
+                    for (let i = 0; i < data.length; i++) 
+                    {
+                        Promise.resolve(data[i]).then(function(element) { //in case separate elements of input are promised
+                            results.push(element)
+                            if (results.length == count) {
+                                resolve(results)
+                            }
+                        }, function(error){
+                            rejected.push(error)
+                            console.log(data.length - rejected.length, data.length, rejected.length, count)
+                            if ((data.length - rejected.length) < count) {
+                                reject(new AggregateError(rejected))
+                            }
+                        })
                     }
                 }
                 else {
