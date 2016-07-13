@@ -52,11 +52,34 @@ class MyPromise extends Promise {
                             }
                         }, function(error){
                             rejected.push(error)
-                            console.log(data.length - rejected.length, data.length, rejected.length, count)
                             if ((data.length - rejected.length) < count) {
                                 reject(new AggregateError(rejected))
                             }
                         })
+                    }
+                }
+                else {
+                    reject(new TypeError('input is not iterable'))
+                }
+            }, reject)
+        })
+    }
+
+    static reduce(input, reducer, initialValue) {
+        let chain = Promise.resolve()
+        return new Promise(function(resolve, reject) {
+            Promise.resolve(input).then(function(data) {
+                if (isIterable(data)) {
+                    for (let i = 0; i < data.length; i++) 
+                    {
+                        Promise.resolve(data[i]).then(function(element) {
+                            chain = chain.then(function(accumulated){
+                                return Promise.resolve(reducer(accumulated, element))
+                            })
+                            if ((i+1) === data.length) {
+                                chain.then(resolve, reject)
+                            }
+                        }, reject)
                     }
                 }
                 else {
