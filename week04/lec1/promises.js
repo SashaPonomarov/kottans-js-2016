@@ -81,14 +81,17 @@ class MyPromise extends Promise {
                         {
                             Promise.resolve(data[i]).then(function(element) {
                                 chain = chain.then(function(accumulated){
-                                    return Promise.resolve(reducer(accumulated, element))
+                                    if (i === 0) {
+                                        accumulated = initial
+                                    }
+                                    return Promise.resolve(reducer(accumulated, element, i))
                                 })
                                 if ((i+1) === data.length) {
                                     chain.then(resolve, reject)
                                 }
                             }, reject)
                         }
-                    })
+                    }, reject)
                 }
                 else {
                     reject(new TypeError('input is not iterable'))
