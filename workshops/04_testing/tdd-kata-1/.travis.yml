@@ -1,6 +1,0 @@
-language: node_js
-node_js:
-  - "6.1"
-before_script:
-  - cd workshops/04_testing/tdd-kata-1
-script: npm test
